@@ -135,3 +135,11 @@ header{width:min(1120px,calc(100% - 64px));margin:0 auto;padding-inline:12px}
 .dialog-transcription .recognition-segment{display:block;width:100%;text-align:left;border:0;background:transparent;font:14px/1.6 monospace;padding:6px;margin:4px 0;border-radius:4px;text-decoration:underline dotted #9eafc8;text-underline-offset:3px}
 .dialog-transcription .recognition-segment:hover,.dialog-transcription .recognition-segment.active{background:#fce7ed;color:#a32d48}
 @media(max-width:650px){.dialog-content{gap:8px;padding:8px}.dialog-transcription{width:125px;padding:2px}.dialog-transcription .recognition-segment{font-size:11px}.dialog-stage{height:calc(96dvh - 100px)}}
+
+.wordmark,.footer-brand{display:inline-flex;align-items:center;gap:9px}.site-icon{width:32px;height:32px;flex-shrink:0;transition:transform .2s ease}.wordmark:hover .site-icon{transform:rotate(-8deg) scale(1.08)}.footer-brand .site-icon{width:27px;height:27px}@media(max-width:760px){.wordmark .site-icon{width:28px;height:28px}}
+
+/* Keep the entire brand on one centered flex baseline. */
+header .wordmark,footer .footer-brand{display:inline-flex;align-items:center;vertical-align:middle;line-height:1;gap:9px}
+.site-icon{display:block;object-fit:contain;margin:0;align-self:center;vertical-align:middle}
+
+.method-components h3{align-items:center;line-height:1.2}.method-components .method-icon{display:block;align-self:center;vertical-align:middle}
