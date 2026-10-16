@@ -25,3 +25,51 @@ const dialog=document.getElementById('image-dialog');function showImage(src,titl
 // Model groups are explicitly separated; Qwen has distinct English and Chinese subgroups.
 function renderTable(model){const outer=document.createElement('div');outer.className=`model-results ${model.startsWith('FLUX')?'flux':'qwen'}`;const heading=document.createElement('div');heading.className='model-title';const h=document.createElement('h3');h.textContent=model;const setting=document.createElement('span');setting.textContent=model.startsWith('FLUX')?'English text generation':'English & Chinese text generation';heading.append(h,setting);outer.append(heading);const scroll=document.createElement('div');scroll.className='table-scroll';scroll.tabIndex=0;scroll.setAttribute('role','region');scroll.setAttribute('aria-label',model+' main RL results');const table=document.createElement('table');table.innerHTML='<thead><tr class="benchmark-row"><th colspan="2">Training</th><th>LongText-Bench</th><th colspan="4">OneIG-Bench</th><th colspan="2">CVTG-2k</th><th colspan="2">GenTextEval-Bench</th><th colspan="3">PolyText-Bench</th></tr><tr>'+['Reward','RL algorithm','TextScore ↑','TextScore ↑','ED ↓','CR ↑','WAC ↑','WordAcc ↑','NED ↑','Qua ↑','Sem ↑','CS ↑','CG ↑','OG ↑'].map(x=>`<th scope="col">${x}</th>`).join('')+'</tr></thead>';const body=document.createElement('tbody');for(const language of ['English','Chinese']){const rows=window.RESULT_ROWS.filter(r=>r[0]===language&&r[1]===model);if(!rows.length)continue;const label=document.createElement('tr');label.className='language-label';const th=document.createElement('th');th.colSpan=14;th.scope='rowgroup';th.textContent=language+' text generation';label.append(th);body.append(label);const best=Array.from({length:12},(_,i)=>{const v=rows.map(r=>r[4][i]).filter(x=>x!==null);return v.length?(i===2?Math.min(...v):Math.max(...v)):null;});for(const r of rows){const tr=document.createElement('tr');if(r[2]==='TextDART')tr.className='ours-row';for(const v of [r[2],r[3]]){const td=document.createElement('td');td.textContent=v;tr.append(td);}r[4].forEach((v,i)=>{const td=document.createElement('td');td.textContent=v===null?'—':v.toFixed(i===2?2:3);if(v!==null&&v===best[i])td.className='best';tr.append(td);});body.append(tr);}}table.append(body);scroll.append(table);outer.append(scroll);return outer;}document.getElementById('result-tables').append(renderTable('FLUX.1-dev'),renderTable('Qwen-Image-2512'));
 document.getElementById('copy-citation').addEventListener('click',async e=>{const value=document.getElementById('bibtex').textContent;try{await navigator.clipboard.writeText(value);e.target.textContent='Copied';}catch{const range=document.createRange();range.selectNodeContents(document.getElementById('bibtex'));const selection=getSelection();selection.removeAllRanges();selection.addRange(range);e.target.textContent='Select & copy';}});
+
+// Release notices while public downloads await approval.
+(() => {
+  const dialog = document.getElementById('resource-dialog');
+  const title = document.getElementById('resource-dialog-title');
+  const message = document.getElementById('resource-dialog-message');
+  const copy = document.getElementById('resource-copy');
+  const status = document.getElementById('resource-copy-status');
+  const symbol = document.getElementById('resource-symbol-path');
+  document.querySelectorAll('[data-resource]').forEach(button => {
+    button.addEventListener('click', () => {
+      const name = button.dataset.resource;
+      dialog.dataset.kind = name;
+      title.textContent = name;
+      status.textContent = '';
+      copy.hidden = name !== 'Contact';
+      message.textContent = name === 'Contact' ? 'issja_hu@163.com'
+        : name === 'Blog' ? 'Coming soon.'
+        : 'Under company approval.\nExpected by the end of October 2026.';
+      symbol.setAttribute('d', name === 'Contact'
+        ? 'M6 9h20v14H6z M6 10l10 8 10-8'
+        : name === 'Blog' ? 'M8 6h12l5 5v15H8z M20 6v6h5 M12 17h9 M12 21h6'
+        : 'M16 6a10 10 0 1 0 0 20 10 10 0 0 0 0-20 M16 10v7l4 2');
+      dialog.showModal();
+    });
+  });
+  copy.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText('issja_hu@163.com');
+      status.textContent = 'Email address copied.';
+    } catch {
+      const selection = getSelection();
+      const range = document.createRange();
+      range.selectNodeContents(message);
+      selection.removeAllRanges();
+      selection.addRange(range);
+      let copied = false;
+      try { copied = document.execCommand('copy'); } catch {}
+      status.textContent = copied ? 'Email address copied.' : 'Email selected. Press Ctrl+C or Command+C to copy.';
+    }
+  });
+  dialog.querySelector('.resource-close').addEventListener('click', () => dialog.close());
+  dialog.addEventListener('click', event => {
+    if (event.target !== dialog) return;
+    const rect = dialog.getBoundingClientRect();
+    if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) dialog.close();
+  });
+})();
