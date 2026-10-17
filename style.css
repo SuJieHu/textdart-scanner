@@ -168,3 +168,39 @@ header .wordmark,footer .footer-brand{display:inline-flex;align-items:center;ver
 @media(max-width:540px){#resource-dialog .resource-dialog-content{padding:52px 26px 36px}#resource-dialog h2{font-size:29px}#resource-dialog[data-kind="Contact"] p{font-size:21px}}
 @media(prefers-reduced-motion:reduce){#resource-dialog{animation:none}}
 @media(max-width:760px){.resource-demo-row .resources{flex-wrap:wrap;gap:8px}.resource-demo-row .resources :is(button,a){font-size:13px;padding:9px 12px}}
+
+
+/* Four samples share requested targets and a noise-aware credit schedule. */
+.method-experience .rollout-demo{width:100%;margin:0 auto}
+.rollout-gt{padding:19px 24px;margin-bottom:22px;background:#f8f9fc;border:1px solid #e8ebf1;border-radius:9px;text-align:center}
+.gt-label{display:block;color:#7c8493;font-size:12px;margin-bottom:12px}
+.rollout-gt>div{display:grid;grid-template-columns:1fr 1.7fr 1fr;gap:20px;align-items:center;font:15px/1.5 Georgia,serif;color:#334563}
+#rollout-stage{text-align:center;font-size:19px;color:#425aa0;margin:30px 0 22px}
+.rollout-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px}
+.rollout-card{min-width:0}
+.rollout-card h5{text-align:center;font-size:13px;font-weight:600;color:#596579;margin:0 0 12px}
+.rollout-poster{position:relative;aspect-ratio:360/350;background:#fafbfd;border:1px solid #e8ebf1;border-radius:6px;overflow:hidden}
+.rollout-canvas{display:block;width:100%;height:100%}
+.rollout-region{position:absolute;border:0;background:transparent;border-radius:0;cursor:pointer;padding:0}
+.rollout-region:not(:disabled):hover{background:#425aa008}.rollout-region:focus-visible{outline:2px solid #425aa0;outline-offset:2px}
+.rollout-summary{font:11px/1.6 Consolas,monospace;text-align:center;color:#778094;margin:10px 0 0;min-height:35px}
+#rollout-caption{text-align:center;font-size:15px;line-height:1.6;color:#627089;margin:22px 0 9px}
+#rollout-equation{text-align:center;font:19px/1.6 Georgia,serif;color:#334563;margin:0 0 16px}
+.rollout-demo .noise-control{max-width:700px;margin:22px auto 0;padding:0}
+.rollout-demo #noise{width:100%;accent-color:#425aa0}
+#rollout-selection{text-align:center;font:12px/1.7 Consolas,monospace;color:#697487;margin:22px 0 0;min-height:40px;overflow-wrap:anywhere}
+@media(max-width:1000px){.rollout-grid{gap:9px}.rollout-card h5{font-size:11px}.rollout-summary{font-size:10px}}
+@media(max-width:760px){.rollout-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 10px}.rollout-gt{padding:15px 12px}.rollout-gt>div{font-size:12px;gap:10px;grid-template-columns:1fr 1.6fr 1fr}#rollout-stage{font-size:17px}.rollout-card h5{font-size:11px}#rollout-caption{font-size:13px}#rollout-equation{font-size:16px}#rollout-selection{font-size:11px}}
+
+/* Place inspection feedback directly beneath the selected sample. */
+.visually-hidden,#rollout-selection.visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0;min-height:0}
+.rollout-card.is-selected h5{color:#425aa0;font-weight:700}
+.rollout-card.is-selected .rollout-poster{border-color:#8092be;box-shadow:0 0 0 2px #425aa018}
+.rollout-local-detail{min-width:0}
+.rollout-local-detail{min-height:28px}
+.rollout-card.is-selected .rollout-local-detail{margin-top:4px;padding:5px 4px;border:0;border-left:3px solid #425aa0;background:#eef2fa;border-radius:2px}
+.rollout-score-line{margin:0;text-align:center;white-space:nowrap;color:#344f86;font:600 11px/1.6 Consolas,monospace;font-variant-numeric:tabular-nums}
+@media(max-width:760px){.rollout-score-line{font-size:9px}.rollout-card.is-selected .rollout-local-detail{padding:5px 1px}}
+.rollout-region:not(:disabled):hover{outline:2px solid #425aa080;outline-offset:0}
+
+.rollout-region:disabled{cursor:default;pointer-events:none}
