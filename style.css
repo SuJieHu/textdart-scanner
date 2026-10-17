@@ -204,3 +204,32 @@ header .wordmark,footer .footer-brand{display:inline-flex;align-items:center;ver
 .rollout-region:not(:disabled):hover{outline:2px solid #425aa080;outline-offset:0}
 
 .rollout-region:disabled{cursor:default;pointer-events:none}
+
+/* Author affiliation marks from the institutions' official websites. */
+header{height:auto;flex-wrap:wrap;row-gap:13px;padding-top:16px;padding-bottom:12px}
+.institution-logos{display:flex;align-items:center;justify-content:center;gap:32px;width:100%;min-width:0}
+.header-logos{flex-basis:100%;padding:11px 8px 0;border-top:1px solid #f0f1f4}
+.institution-logo{display:flex;justify-content:center;align-items:center;flex-shrink:0;gap:7px;height:35px;transition:opacity .18s ease;opacity:.85}
+.institution-logo:hover{opacity:1;text-decoration:none}
+.institution-logo img{display:block;object-fit:contain;width:135px;max-width:100%;height:34px}
+.institution-hkust img{width:132px;height:38px}
+.institution-tsinghua img{width:122px;height:36px}
+.institution-zhejiang img{width:124px;height:35px}
+.institution-dlut img{width:145px;height:35px}
+.institution-tencent img{width:103px;height:28px}
+.institution-logo img{filter:none}
+.institution-peking img{width:34px;height:34px}
+.institution-peking span{font:11px/1.3 Georgia,serif;color:#5c3338;white-space:nowrap}
+footer{flex-wrap:wrap;row-gap:26px}
+.footer-logos{flex-basis:100%;padding:24px 8px 4px;border-top:1px solid #f0f1f4;gap:38px}
+.footer-logos .institution-logo{height:44px}
+.footer-logos .institution-logo img{height:40px}
+.footer-logos .institution-peking img{height:40px;width:40px}
+html{scroll-padding-top:150px}
+@media(max-width:1000px){.institution-logos{gap:20px}.institution-logo img{width:110px}.institution-hkust img{width:120px}.institution-dlut img{width:125px}.institution-tencent img{width:90px}.institution-peking img{width:32px}.institution-peking span{font-size:10px}}
+@media(max-width:760px){header{padding-top:14px;padding-bottom:12px}.institution-logos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px 18px}.header-logos{margin-top:13px;padding-top:13px}.institution-logo{height:28px;min-width:0}.institution-logo img{width:105px;height:28px}.institution-hkust img{width:105px;height:31px}.institution-dlut img{width:110px}.institution-peking img{width:27px;height:27px}.institution-peking span{font-size:9px}.institution-tencent img{width:85px;height:23px}.footer-logos{gap:20px 18px;padding-top:24px}.footer-logos .institution-logo{height:34px}.footer-logos .institution-logo img{height:32px}.footer-logos .institution-peking img{height:32px;width:32px}html{scroll-padding-top:210px}}
+
+/* Keep the header in normal document flow and retain full-color affiliation marks. */
+header{position:static;top:auto}
+html{scroll-padding-top:24px}
+.institution-tsinghua,.institution-zhejiang,.institution-dlut{opacity:1}

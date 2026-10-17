@@ -1,0 +1,13 @@
+Official source URLs for author affiliation marks. Logos remain the property of their respective institutions.
+Official reverse-white outlines are rendered with institutional colors: Tsinghua purple #660874; Zhejiang blue #003e87; DUT blue #0073bb. No geometric alteration. Tsinghua SVG embeds the original PNG alpha mask.
+
+hkust.svg: https://hkust.edu.hk/sites/default/files/2024-03/HKUST_logo_1.svg
+tsinghua.png: https://www.tsinghua.edu.cn/image/logo180.png
+zhejiang.svg: https://www.zju.edu.cn/_upload/tpl/0b/bf/3007/template3007/static/media/mlogo.66388675484ae2a807b2ad65b1d31ca9.svg
+peking.png: https://www.pku.edu.cn/pku_logo_red.png
+dlut.svg: https://www.dlut.edu.cn/images/logo.svg
+tencent.png: https://www.tencent.com/wp-content/uploads/2024/05/logo@2x-en.png
+Color references:
+https://www.tsinghua.edu.cn/__local/C/B6/1C/5682B1124834BFE4B7BB43744CF_C7C409E3_C2FAA.pdf
+https://www.zju.edu.cn/514/listm.htm
+https://www.dlut.edu.cn/xxgk/dxwh/xxVI.htm
